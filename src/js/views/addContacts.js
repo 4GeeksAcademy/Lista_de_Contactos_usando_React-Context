@@ -7,6 +7,10 @@ const AddContacts = () => {
     const handlerAddContact = () => {
         actions.AddContacts({
 
+            name: name,
+            phone: 854732192,
+            adress: 
+
         })
     }
     return (
