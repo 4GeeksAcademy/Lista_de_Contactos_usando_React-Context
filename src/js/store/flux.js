@@ -13,14 +13,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 					initial: "white"
 				}
 			],
-			contacts: []
-			inputName: ""
+			contacts: [],
+			inputName: "",
+			agenda: "octubre"
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
+			
+			getAgenda: () => {
+
+				const store = getStore();
+
+				fetch(`https://playground.4geeks.com/contact/agendas/${store.agenda}/contacts`)
+					.then(response => response.json())
+					.then(data => setStore({contacts: data.contacts}));
+				
+				},
 			loadSomeData: () => {
 				/**
 					fetch().then().then(data => setStore({ "foo": data.bar }))
