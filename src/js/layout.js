@@ -9,6 +9,9 @@ import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
+import { Contacts } from "./views/contacts";  // Asegúrate de que esta ruta sea correcta
+import { AddContacts } from "./views/addContacts";  // Asegúrate de que esta ruta sea correcta
+
 
 //create your first component
 const Layout = () => {
