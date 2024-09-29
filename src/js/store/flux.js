@@ -1,3 +1,5 @@
+import { stringify } from "query-string";
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -14,7 +16,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			],
 			contacts: [],
-			inputName: "",
 			agenda: "octubre"
 		},
 		actions: {
@@ -25,12 +26,29 @@ const getState = ({ getStore, getActions, setStore }) => {
 			
 			getAgenda: () => {
 
-				const store = getStore();
+				const {agenda} = getStore();
 
-				fetch(`https://playground.4geeks.com/contact/agendas/${store.agenda}/contacts`)
+				fetch(`https://playground.4geeks.com/contact/agendas/${agenda}/contacts`)
 					.then(response => response.json())
 					.then(data => setStore({contacts: data.contacts}));
 				
+				},
+				addContact: (contact) => {
+					const [agenda, contacts] = getStore();
+					fetch(`https://playground.4geeks.com/contact/agendas/${agenda}/contacts`, {
+					method: "POST",
+					Headers: {
+						"content-type": "application/json" 
+				},
+				body: JSON.stringify(contact)
+				}).then((response) => response.json()).then((data) => setStore({contacts: [...contacts, data]}))
+				},
+
+				deleteContact: (id) => {
+					const {agenda, contacts} = getStore();
+					fetch(`https://playground.4geeks.com/contact/agendas/${agenda}/contacts/${id}`, {
+						method: "DELETE"
+					})
 				},
 			loadSomeData: () => {
 				/**

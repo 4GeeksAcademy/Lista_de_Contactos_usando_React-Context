@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import {context} from /workspaces/Lista_de_Contactos_usando_React-Context/src/js/store/appContext.js;
+import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 
 const contacts = () => {
