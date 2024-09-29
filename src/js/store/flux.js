@@ -37,7 +37,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const [agenda, contacts] = getStore();
 					fetch(`https://playground.4geeks.com/contact/agendas/${agenda}/contacts`, {
 					method: "POST",
-					Headers: {
+					headers: {
 						"content-type": "application/json" 
 				},
 				body: JSON.stringify(contact)
@@ -47,7 +47,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 				deleteContact: (id) => {
 					const {agenda, contacts} = getStore();
 					fetch(`https://playground.4geeks.com/contact/agendas/${agenda}/contacts/${id}`, {
-						method: "DELETE"
+						method: "DELETE",
+						headers: {
+							"content-type": "application/json" 
+					},
+					}).then(() => {
+						const newContacts = contacts.filter((contact) => contact.id !== id)
+						setStore({contacts: newContacts})
+					}).catch(e => { 
+						console.log(e)
 					})
 				},
 			loadSomeData: () => {
