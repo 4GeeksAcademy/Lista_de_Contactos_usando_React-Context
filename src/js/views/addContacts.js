@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 const AddContacts = () => {
   const { actions } = useContext(Context);
-  const [form, setForm] = useState({ full_name: "", email: "", phone: "", address: "" });
+  const [form, setForm] = useState({ name: "", email: "", phone: "", address: "" });
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -28,9 +28,9 @@ const AddContacts = () => {
           <label>Nombre Completo</label>
           <input
             type="text"
-            name="full_name"
+            name="name"
             className="form-control"
-            value={form.full_name}
+            value={form.name}
             onChange={handleChange}
             required
           />
