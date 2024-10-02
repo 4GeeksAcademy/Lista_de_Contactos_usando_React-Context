@@ -43,9 +43,15 @@ const Contacts = () => {
     return (
         <div className="container mt-5">
             <h1>Lista de Contactos</h1>
-            <Link to="/addContacts" className="btn btn-primary mb-3">
-                Añadir Contacto
-            </Link>
+            <div className="d-flex justify-content-between mb-3">
+                <Link to="/addContacts" className="btn btn-primary">
+                    Añadir Contacto
+                </Link>
+                {/* Botón para regresar al Home */}
+                <Link to="/" className="btn btn-secondary">
+                    Volver 
+                </Link>
+            </div>
             <ul className="list-group">
                 {store.contacts.length === 0 ? (
                     <li className="list-group-item">No hay contactos</li>

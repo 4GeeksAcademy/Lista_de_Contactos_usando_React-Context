@@ -1,5 +1,3 @@
-import { stringify } from "query-string";
-
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
