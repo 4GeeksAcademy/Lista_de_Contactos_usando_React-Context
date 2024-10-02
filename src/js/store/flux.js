@@ -16,7 +16,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			],
 			contacts: [],
-			agenda: "octubre"
+			agenda: "octubre",
+			selectedContact: null 
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -60,6 +61,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log(e)
 					})
 				},
+
+				// Nueva función para obtener un contacto individual por su ID
+			getContact: (id) => {
+				const { agenda } = getStore();
+				
+				// Realiza la solicitud GET para obtener los detalles de un contacto
+				fetch(`https://playground.4geeks.com/contact/agendas/${agenda}/contacts/${id}`)
+					.then(response => response.json())
+					.then(data => {
+						// Actualiza el estado con el contacto seleccionado
+						setStore({ selectedContact: data });
+					})
+					.catch(e => {
+						console.log("Error obteniendo el contacto:", e);
+					});
+			},
+			
 			loadSomeData: () => {
 				/**
 					fetch().then().then(data => setStore({ "foo": data.bar }))
