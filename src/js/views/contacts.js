@@ -1,24 +1,3 @@
-// import { useContext } from "react";
-// import { Context } from "../store/appContext";
-// import { Link } from "react-router-dom";
-
-// const Contacts = () => {
-//   const { store } = useContext(Context);
-
-//   return (
-//     <div>
-//       <Link to="/addContact">Add Contact</Link>
-//       {store.contacts.map((contact) => {
-//         return <div key={contact.id}>{contact.name}</div>;
-//       })}
-//     </div>
-//   );
-// };
-
-// export { Contacts };
-
-
-
 import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";

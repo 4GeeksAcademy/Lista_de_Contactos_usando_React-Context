@@ -1,29 +1,3 @@
-// import { useContext } from "react";
-// import { Context } from "../store/appContext";
-// import { Link } from "react-router-dom";
-
-// const AddContacts = () => {
-//   const { actions } = useContext(Context);
-
-//   const handlerAddContact = () => {
-//     actions.addContact({
-//       name: "test clases",
-//       phone: "812908908",
-//       email: "sentimientoleproso@gmail.com",
-//       address: "ayalagauna2424",
-//     });
-//   };
-
-//   return (
-//     <>
-//       <button onClick={handlerAddContact}>Add Contact</button>
-//       <Link to="/contacts">Volver</Link>
-//     </>
-//   );
-// };
-
-// export { AddContacts };
-
 import React, { useState, useContext } from "react";
 import { Context } from "../store/appContext";
 import { Link, useNavigate } from "react-router-dom";
@@ -95,7 +69,7 @@ const AddContacts = () => {
           />
         </div>
         <button type="submit" className="btn btn-primary">Guardar Contacto</button>
-        <Link to="/contacts" className="btn btn-secondary ms-3">Volver</Link>
+        <Link to="/" className="btn btn-secondary ms-3">Volver</Link> 
       </form>
     </div>
   );

@@ -31,14 +31,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetch(`https://playground.4geeks.com/contact/agendas/${agenda}/contacts`)
 					.then(response => response.json())
 					.then(data => setStore({contacts: data.contacts}));
+					
 				
 				},
 				addContact: (contact) => {
-					const [agenda, contacts] = getStore();
+					const {agenda, contacts} = getStore();
 					fetch(`https://playground.4geeks.com/contact/agendas/${agenda}/contacts`, {
 					method: "POST",
 					headers: {
 						"content-type": "application/json" 
+						
 				},
 				body: JSON.stringify(contact)
 				}).then((response) => response.json()).then((data) => setStore({contacts: [...contacts, data]}))
