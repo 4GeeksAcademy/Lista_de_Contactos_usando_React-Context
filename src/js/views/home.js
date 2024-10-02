@@ -7,7 +7,7 @@ export const Home = () => (
 	<div className="text-center mt-5">
 		<h1>MIS CONTACTOS!!!</h1>
 		<p>
-		<img src={gusty} style={{ width: "200px", height: "auto" }} alt="Imagen de contacto" />
+		<img src={gusty} style={{ width: "200px", height: "500px" }} alt="Imagen de contacto" />
 
 		</p>
 		<div className="d-flex justify-content-center mt-3">
