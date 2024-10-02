@@ -62,6 +62,34 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				},
 
+				// Nueva función para actualizar un contacto
+				updateContact: (id, updatedContact) => {
+					const { agenda, contacts } = getStore();
+					
+					// Hacemos la petición PUT para actualizar el contacto
+					fetch(`https://playground.4geeks.com/contact/agendas/${agenda}/contacts/${id}`, {
+						method: "PUT",
+						headers: {
+							"content-type": "application/json"
+						},
+						body: JSON.stringify(updatedContact) // Pasamos los datos actualizados
+					})
+					.then(response => response.json())
+					.then(data => {
+						// Actualizamos el estado con el contacto modificado
+						const updatedContacts = contacts.map(contact => {
+							if (contact.id === id) {
+								return data; // Reemplazamos el contacto actualizado
+							}
+							return contact;
+						});
+						setStore({ contacts: updatedContacts });
+					})
+					.catch(e => {
+						console.log("Error actualizando el contacto:", e);
+					});
+				},
+
 				// Nueva función para obtener un contacto individual por su ID
 			getContact: (id) => {
 				const { agenda } = getStore();
